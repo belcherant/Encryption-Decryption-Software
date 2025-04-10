@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Encrypt and Decrypt</title>
+        <style>
+            h1 {
+                font-size: 40px;
+                color: #25341f;
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            button#run {
+                font-size: 40px;
+                padding: 100px 200px;
+                background-color: #4b6043;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+        </style>
+    </head>
+    <body style="background-color: #728C69;">
+        <h1>Encrypt and Decrypt</h1>
+        <textarea id="input" style="display: none;">
+        // Initialize User Prompt
+
+            // Call Encrypt Function
+            encrypt();
+
+            // Create Function to Encrypt
+            function encrypt(){
+
+                // Ask User Input
+                let encryptNum = prompt("Enter Input to Encrypt: ");
+
+                if ( encryptNum.length < 4 || encryptNum.length > 4 ){
+
+                    encrypt();
+
+                } else if ( encryptNum.length == 4 ){
+
+                    // Use Array to Get Individual Value
+                    let setString = encryptNum;
+                    let oldDigit1 = setString[0];
+                    let oldDigit2 = setString[1];
+                    let oldDigit3 = setString[2];
+                    let oldDigit4 = setString[3];
+
+                    // Convert String into Integers
+                    digit1 = Number.parseInt(oldDigit1);
+                    digit2 = Number.parseInt(oldDigit2);
+                    digit3 = Number.parseInt(oldDigit3);
+                    digit4 = Number.parseInt(oldDigit4);
+
+                    // Change Numbers Using Addition and Modulous
+                    let newDigit1 = (digit1 + 7) % 10;
+                    let newDigit2 = (digit2 + 7) % 10;
+                    let newDigit3 = (digit3 + 7) % 10;
+                    let newDigit4 = (digit4 + 7) % 10;
+
+                    // Print
+                    document.write("Encrypted Result: " + newDigit3 + '' + newDigit4 + '' + newDigit1 + '' + newDigit2 + "-------");
+                    }
+                }
+
+        // Call decrypt Function
+        decrypt();
+
+        // Create Function to Decrypt
+        function decrypt(){
+
+            // Ask User Input
+            let decryptNum = prompt("Enter Input to Decrypt: ");
+
+            if ( decryptNum.length < 4 || decryptNum.length > 4 ){
+
+                decrypt();
+
+            } else if ( decryptNum.length == 4 ){
+
+                // Use Array to Get Individual Value
+                let setString = decryptNum;
+                let oldDigit1 = setString[0];
+                let oldDigit2 = setString[1];
+                let oldDigit3 = setString[2];
+                let oldDigit4 = setString[3];
+
+                // Convert String into Integers
+                digit1 = Number.parseInt(oldDigit1);
+                digit2 = Number.parseInt(oldDigit2);
+                digit3 = Number.parseInt(oldDigit3);
+                digit4 = Number.parseInt(oldDigit4);
+
+                // Change Numbers Using Addition and Modulous
+                let newDigit1 = (digit1 - 7 + 10) % 10;
+                let newDigit2 = (digit2 - 7 + 10) % 10;
+                let newDigit3 = (digit3 - 7 + 10) % 10;
+                let newDigit4 = (digit4 - 7 + 10) % 10;
+
+                // Print
+                document.write("Decrypted Result: " + newDigit3 + '' + newDigit4 + '' + newDigit1 + '' + newDigit2);
+
+            }
+
+        }
+        </textarea>
+        <button id="run">Click to Run Program</button>
+        <pre id="output"></pre>
+
+        <head>
+            <style>
+                pre#output {
+                    background-color: #728C69;
+                    width: 50%;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+            </style>
+        </head>
+
+        <script>
+            const input = document.getElementById("input");
+            const run = document.getElementById("run");
+            const output = document.getElementById("output");
+            
+            run.addEventListener("click", () => {
+                try {
+                    const result = eval(input.value);
+                    output.innerHTML = result + "<br>";
+                } catch (error) {
+                    output.innerText = error;
+                }
+            });
+        </script>
+    </body>
+</html>
